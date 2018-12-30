@@ -11,5 +11,18 @@
     "url": "(https://github.com/currant77/aribtraj)"
   },
   "author": "Taylor Curran <taylorcurran77@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cross-fetch": "^2.2.3",
+    "dotenv": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-google": "^0.11.0"
+  },
+  "eslintConfig": {
+    "env" : {
+        "es6" : true
+    }
+  }
 }
