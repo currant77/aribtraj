@@ -4,6 +4,7 @@
   "description": "Script for pulling data from arbitraj.io API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-config-google": "^0.11.0"
+  },
+  "engines": {
+    "node": "10.13.0"
   }
 }

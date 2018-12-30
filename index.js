@@ -1,3 +1,28 @@
+/* Heroku Application code */
+const http = require('http');
+
+// Port
+const localPort = 5000;
+let PORT = process.env.PORT || localPort;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(PORT, () => {
+  let str;
+  if(PORT == localPort) {
+    str = `http://localhost:${localPort}`;
+  } else {
+    str = `${PORT}`;
+  }
+
+  console.log(`Server running on ${str}/`);
+});
+
+/*
 const fs = require('fs');
 const fetch = require('cross-fetch');
 require('dotenv').config();
@@ -51,4 +76,4 @@ function fetchAndWrite(filename = 'jsonfile', filesystem = fs) {
 
 console.log(`${API_HOST}spreads`);
 console.log(JSON.stringify(requestBody));
-fetchAndWrite();
+fetchAndWrite(); */
