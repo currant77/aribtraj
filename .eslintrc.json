@@ -1,4 +1,6 @@
 {
+    "extends" : "google",
+
     "parserOptions": {
         "ecmaVersion" : 6
     },
@@ -7,5 +9,7 @@
         "es6": true
     },
 
-    "extends" : "google"
+    "rules":{
+        "linebreak-style": "off"
+    }
 }

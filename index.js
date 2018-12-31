@@ -13,7 +13,8 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   let str;
-  if(PORT == localPort) {
+  
+  if (PORT == localPort) {
     str = `http://localhost:${localPort}`;
   } else {
     str = `${PORT}`;
