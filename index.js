@@ -1,10 +1,8 @@
 /* Heroku Application code */
 
-// Server connection ----------------------------------------------------
-
+// Connect to server
 const http = require('http');
 
-// Set PORT
 const localPort = 5000;
 const PORT = process.env.PORT || localPort;
 
@@ -14,6 +12,31 @@ const server = http.createServer((req, res) => {
   res.end('Hello World\n');
 });
 
+// Connect to database
+const {Client} = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+});
+
+client.connect();
+
+// Setup Arbitraj API
+const fs = require('fs');
+const fetch = require('cross-fetch');
+require('dotenv').config();
+const API_HOST = 'https://arbitraj.io/api/v1/';
+
+// Simple db query
+client.query('SELECT NOW()' /* QUERY */ ).then((res) => {
+  console.log(res);
+  client.end();
+}).catch((err) => {
+  console.log(err.message);
+  client.end();
+});
+
+// Listen on port
 server.listen(PORT, () => {
   let str;
   if (PORT == localPort) {
@@ -25,35 +48,8 @@ server.listen(PORT, () => {
   console.log(`Server running on ${str}/`);
 });
 
-// Database connection ---------------------------------------------------
-
-// NOTE: set up so it can connect to local or remote db
-
-const {Client} = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-
-client.query('SELECT * FROM assets;', (err, res) => {
-  if (err) throw err;
-  console.log('Assets table: \n');
-  for (const row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-});
-
-client.end();
-
 /*
-const fs = require('fs');
-const fetch = require('cross-fetch');
-require('dotenv').config();
 
-const API_HOST = 'https://arbitraj.io/api/v1/';
 
 const requestBody = {
   minSpread: 5.0,
