@@ -4,7 +4,7 @@
   "description": "Script for pulling data from arbitraj.io API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "cross-fetch": "^2.2.3",
-    "dotenv": "^6.1.0"
+    "dotenv": "^6.1.0",
+    "pg": "^7.8.0"
   },
   "devDependencies": {
     "eslint": "^5.9.0",

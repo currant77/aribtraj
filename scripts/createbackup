@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Creates a backup of the given heroku app's database
+# Arguments:
+#   - [app-name] heroku app
+#   - [filename] file name (optional; default is 'backup.dump)
+
+if [[ $1 == "" ]]; then
+	echo "Failed: requires app name as first argument"
+	exit 1
+fi
+
+name=backup
+if [[ $2 != "" ]]; then
+	name=$2
+fi
+
+name=data/${name}.dump
+
+# Create directory if it doesn't exist
+mkdir --parents data
+
+echo -e "creating heroku backup for app $1 called $name\n"
+
+heroku pg:backups:capture --app $1
+heroku pg:backups:download --app $1 --output $name
+
+echo "done"
+exit 0

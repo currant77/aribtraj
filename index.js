@@ -1,9 +1,12 @@
 /* Heroku Application code */
+
+// Server connection ----------------------------------------------------
+
 const http = require('http');
 
-// Port
+// Set PORT
 const localPort = 5000;
-let PORT = process.env.PORT || localPort;
+const PORT = process.env.PORT || localPort;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -13,7 +16,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   let str;
-  
   if (PORT == localPort) {
     str = `http://localhost:${localPort}`;
   } else {
@@ -22,6 +24,29 @@ server.listen(PORT, () => {
 
   console.log(`Server running on ${str}/`);
 });
+
+// Database connection ---------------------------------------------------
+
+// NOTE: set up so it can connect to local or remote db
+
+const {Client} = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT * FROM assets;', (err, res) => {
+  if (err) throw err;
+  console.log('Assets table: \n');
+  for (const row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+});
+
+client.end();
 
 /*
 const fs = require('fs');
