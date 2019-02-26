@@ -1,0 +1,61 @@
+{
+    "success": true,
+    "result": [{
+        "coin": {
+            "name": "Monero",
+            "symbol": "XMR",
+            "slug": "monero",
+            "cmc": 328,
+            "active": true
+        },
+        "spread": 12.007748333814959,
+        "low": {
+            "exchange": {
+                "name": "Livecoin",
+                "slug": "livecoin"
+            },
+            "ask": {
+                "rate": 0.01172304,
+                "compare": 46.380353175072
+            },
+            "bid": {
+                "rate": 0.01171721,
+                "compare": 46.357287702378
+            },
+            "last": {
+                "rate": 0.01172014,
+                "compare": 46.368879783852
+            },
+            "pair": "BTC",
+            "volume": 1386.08723942,
+            "volumeUSD": 64271.31257459727,
+            "canWithdraw": true,
+            "canDeposit": true,
+            "url": "https://www.livecoin.net/en/trade/index?currencyPair=XMR/BTC"
+        },
+        "high": {
+            "exchange": {
+                "name": "Bitfinex",
+                "slug": "bitfinex"
+            },
+            "ask": {
+                "rate": 52.007,
+                "compare": 52.007
+            },
+            "bid": {
+                "rate": 51.96,
+                "compare": 51.96
+            },
+            "last": {
+                "rate": 51.918,
+                "compare": 51.918
+            },
+            "pair": "USD",
+            "volume": 5869.61924025,
+            "volumeUSD": 304738.8917152995,
+            "canWithdraw": true,
+            "canDeposit": true,
+            "url": "https://www.bitfinex.com/t/XMR:USD"
+        }
+    }]
+}
