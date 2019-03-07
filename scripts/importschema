@@ -8,13 +8,24 @@ if [[ $1 == "" ]]; then
 	exit 1
 fi
 
+# For local databases:
+#   host = localhost
+#   port = 5432
+#   username = postgres
+
 echo -n "dbname > " 
 read dbname
 
-username=postgres
-port=5432
-host=localhost
-echo -e "Restoring database from $1 \n\n"
+echo -n "host > "
+read host
+
+echo -n "port > "
+read port
+
+echo -n "username > "
+read username
+
+echo -e "Loading database with schema from $1 \n\n"
 
 psql --dbname=$dbname --file=$1 --echo-all --echo-errors --host=$host --port=$port --username=$username
 
