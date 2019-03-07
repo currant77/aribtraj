@@ -13,7 +13,7 @@ require('dotenv').config();
 
 const API_HOST = 'https://arbitraj.io/api/v1/';
 
-const minSpread = 0.0;
+const minSpread = 2.0;
 const minVolume = 0;
 const queryAssets = ['USD', 'BTC', 'ETH', 'USDT', 'EUR'];
 const include = 'all';
